@@ -26,7 +26,8 @@ public class CoreferenceResolver {
                     String resolution = resolveCoreference(sent);
                     System.out.println(String.format("Before: %s - Resolution: %s - Sentence: %s", sent.getBeforePrep(), resolution, sent.getCompleteSentence()));
                     if(checkResolution(resolution)) {
-                        sent.replaceInBeforeSent(cor, resolution);
+                        String processed = SentencePreprocessor.cleanBeforeAfterString(resolution);
+                        sent.replaceInBeforeSent(cor, processed);
                     }
                 }
             }

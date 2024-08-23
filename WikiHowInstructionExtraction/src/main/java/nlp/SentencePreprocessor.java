@@ -146,4 +146,8 @@ public class SentencePreprocessor {
         int wordBeginLocation = toCut.indexOf(word);
         return toCut.substring(verbBeginLocation, wordBeginLocation);
     }
+
+    public static String cleanBeforeAfterString(String toClean) {
+        return toClean.replace("the ", "").replace("a ", "").replace("an ", "").replace("your ", "").trim();
+    }
 }

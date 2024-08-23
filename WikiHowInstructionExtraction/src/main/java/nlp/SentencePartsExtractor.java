@@ -75,7 +75,9 @@ public class SentencePartsExtractor {
                 continue;
             }
 
-            results.add(new DeconstructedStepSentence(sentCount++, verb, prep, before.toString().trim(), after.toString().trim(), sentEntry.getKey(), currStep));
+            String beforeString = SentencePreprocessor.cleanBeforeAfterString(before.toString());
+            String afterString = SentencePreprocessor.cleanBeforeAfterString(after.toString());
+            results.add(new DeconstructedStepSentence(sentCount++, verb, prep, beforeString, afterString, sentEntry.getKey(), currStep));
         }
 
         return results;
