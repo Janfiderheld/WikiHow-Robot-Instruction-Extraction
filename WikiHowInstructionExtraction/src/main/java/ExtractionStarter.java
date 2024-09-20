@@ -38,14 +38,21 @@ public class ExtractionStarter {
             return;
         }
 
-        if(args.length > 0 && args[0].equals("pouring")) {
-            VerbHyponymCountAnalyzer.analyzeHyponyms(unfilteredSteps, PouringVerb.values());
-            return;
-        }
+        if (args.length > 0) {
+            ISearchableVerb[] verbs = switch (args[0]) {
+                case "pour" -> PouringVerb.values();
+                case "pickplace" -> PickOrPlaceVerb.values();
+                case "detect" -> DetectVerb.values();
+                case "perceive" -> PerceiveVerb.values();
+                case "cook" -> CookVerb.values();
+                case "cool" -> CoolVerb.values();
+                default -> null;
+            };
 
-        if(args.length > 0 && args[0].equals("pickplace")) {
-            VerbHyponymCountAnalyzer.analyzeHyponyms(unfilteredSteps, PickOrPlaceVerb.values());
-            return;
+            if (verbs != null) {
+                VerbHyponymCountAnalyzer.analyzeHyponyms(unfilteredSteps, verbs);
+                return;
+            }
         }
 
         if(GlobalSettings.GET_CORPUS_META) {

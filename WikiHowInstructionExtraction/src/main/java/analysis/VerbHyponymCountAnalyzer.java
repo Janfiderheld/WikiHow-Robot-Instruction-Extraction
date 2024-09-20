@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class VerbHyponymCountAnalyzer {
     public static void analyzeHyponyms(ArrayList<WikiHowStep> steps, ISearchableVerb[] verbs) {
         System.out.printf("Starting the %s Hyponym Analysis...\n", verbs.getClass().getSimpleName());
+        System.out.println("Verb,Title,Title Desc,Method,Step Headline,Step Desc,SUM");
         for (ISearchableVerb verb : verbs) {
             int descCount = 0;
             int methCount = 0;
